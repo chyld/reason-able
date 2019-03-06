@@ -17,6 +17,8 @@ let food = BsFaker.Image.food();
 // ---------------------------------------------------------- //
 // ---------------------------------------------------------- //
 // ---------------------------------------------------------- //
+let y = pi *. 3.0;
+let z = a + 1;
 [%bs.raw "console.log('food is:', food)"];
-[%bs.raw {dog| console.log("pi is:", pi)  |dog}];
+[%bs.raw {dog| console.log("z is:", z)  |dog}];
 let f: int = [%bs.raw "3 ** 2"];

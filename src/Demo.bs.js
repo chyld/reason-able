@@ -7,9 +7,13 @@ console.log("Hello World");
 
 var food = Image$BsFaker.food(undefined, undefined, undefined, /* () */0);
 
+var y = Math.PI * 3.0;
+
+var z = 4;
+
 ((console.log('food is:', food)));
 
-(( console.log("pi is:", pi)  ));
+(( console.log("z is:", z)  ));
 
 var f = (3 ** 2);
 
@@ -26,5 +30,7 @@ exports.b = b;
 exports.c = c;
 exports.d = d;
 exports.food = food;
+exports.y = y;
+exports.z = z;
 exports.f = f;
 /*  Not a pure module */
