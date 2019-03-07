@@ -7,7 +7,11 @@ console.log("hello", "io");
 
 var x = 14;
 
-Util$Reasonable.printDir(0, "./");
+Util$Reasonable.printDir(0, "Demo.re", "./");
+
+console.log("----------------------------------------");
+
+Util$Reasonable.printDir(0, undefined, "./");
 
 var y = 7;
 

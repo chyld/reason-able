@@ -7,4 +7,6 @@ let x = {
   a + b + y;
 };
 
-Util.printDir(0, "./");
+Util.printDir(~padding=0, ~ignore="Demo.re", "./");
+Js.log("----------------------------------------");
+Util.printDir(~padding=0, "./");

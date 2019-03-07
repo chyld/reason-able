@@ -7,6 +7,17 @@ var Path = require("path");
 var $$Array = require("bs-platform/lib/js/array.js");
 var $$String = require("bs-platform/lib/js/string.js");
 
+function filterItemsList(ignore, itemsList) {
+  if (ignore !== undefined) {
+    var value = ignore;
+    return List.filter((function (item) {
+                    return item.name !== value;
+                  }))(itemsList);
+  } else {
+    return itemsList;
+  }
+}
+
 function getAbsolutePath(path) {
   return Path.resolve(__dirname, path);
 }
@@ -15,7 +26,7 @@ function padText(padding, text) {
   return $$String.make(padding, /* " " */32) + text;
 }
 
-function printDir(padding, path) {
+function printDir(padding, ignore, path) {
   var absolutePath = Path.resolve(__dirname, path);
   var options = {
     withFileTypes: true
@@ -23,14 +34,15 @@ function printDir(padding, path) {
   return List.iter((function (item) {
                 if (item.isDirectory()) {
                   console.log(padText(padding, "📁" + (" " + item.name)));
-                  return printDir(padding + 1 | 0, absolutePath + ("/" + item.name));
+                  return printDir(padding + 1 | 0, ignore, absolutePath + ("/" + item.name));
                 } else {
                   console.log(padText(padding, "📄" + (" " + item.name)));
                   return /* () */0;
                 }
-              }), $$Array.to_list(Fs.readdirSync(absolutePath, options)));
+              }), filterItemsList(ignore, $$Array.to_list(Fs.readdirSync(absolutePath, options))));
 }
 
+exports.filterItemsList = filterItemsList;
 exports.getAbsolutePath = getAbsolutePath;
 exports.padText = padText;
 exports.printDir = printDir;
